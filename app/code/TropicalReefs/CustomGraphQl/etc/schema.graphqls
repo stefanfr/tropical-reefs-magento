@@ -1,0 +1,21 @@
+type Query {
+    product (
+        filter: CustomProductAttributeFilterInput @doc(description: "The product attributes to search for and return."),
+    ) : Product
+    @resolver( class: "TropicalReefs\\CustomGraphQl\\Model\\Resolver\\Product")
+    @doc(description: "Query by comment for product fields.")
+}
+
+type Product @doc(description:"Comment for Product") {
+    product: ProductInterface @doc(description: "comment for product[Products].")
+}
+
+input CustomProductAttributeFilterInput {
+    uid: FilterEqualTypeInput @doc(description: "Filter product by the unique ID")
+    entity_id: FilterEqualTypeInput @doc(description: "Filter product by the entity ID")
+}
+
+input CategoryFilterInput  @doc(description: "Defines the filters to be used in the search. A filter contains at least one attribute, a comparison operator, and the value that is being searched for.")
+{
+    show_on_homepage: FilterEqualTypeInput @doc(description: "Filter show_on_homepage")
+}

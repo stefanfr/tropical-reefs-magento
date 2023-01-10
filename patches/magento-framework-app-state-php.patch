@@ -1,0 +1,15 @@
+--- /dev/null
++++ ../App/State.php
+@@ -150,9 +150,9 @@
+     public function getAreaCode()
+     {
+         if (!isset($this->_areaCode)) {
+-            throw new \Magento\Framework\Exception\LocalizedException(
+-                new \Magento\Framework\Phrase('Area code is not set')
+-            );
++//            throw new \Magento\Framework\Exception\LocalizedException(
++//                new \Magento\Framework\Phrase('Area code is not set')
++//            );
+         }
+         return $this->_areaCode;
+     }

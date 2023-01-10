@@ -1,0 +1,4 @@
+type StoreConfig {
+    featured_category_id  : String  @doc(description: "Query by homepage_settings_featured_category_id.")
+    default_margin  : String  @doc(description: "Query by prices_settings_default_margin.")
+}

@@ -1,0 +1,15 @@
+interface ProductInterface @typeResolver(class: "Magento\\CatalogGraphQl\\Model\\ProductInterfaceTypeResolverComposite") @doc(description: "Contains fields that are common to all types of products.") {
+    custom_attributes: [CustomAttribute] @doc(description: "An array of custom product attributes.") @resolver(class: "TropicalReefs\\CatalogGraphQl\\Model\\Resolver\\Product\\CustomAttributes")
+}
+
+type SelectedShippingMethod @doc(description: "Contains details about the selected shipping method and carrier.") {
+    price_excl_tax: Money! @doc(description: "The cost of shipping using this shipping method, excluding tax.")
+    price_incl_tax: Money! @doc(description: "The cost of shipping using this shipping method, including tax.")
+}
+
+
+type CustomAttribute {
+    code: String!
+    label: String
+    value: String
+}

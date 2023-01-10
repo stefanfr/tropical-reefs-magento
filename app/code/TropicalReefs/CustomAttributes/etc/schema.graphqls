@@ -1,0 +1,12 @@
+input CategoryFilterInput  @doc(description: "Defines the filters to be used in the search. A filter contains at least one attribute, a comparison operator, and the value that is being searched for.")
+{
+    include_in_menu: FilterEqualTypeInput @doc(description: "Filter include_in_menu")
+    is_brand: FilterTypeInput @doc(description: "Filter is_brand")
+    show_in_quick_menu: FilterEqualTypeInput @doc(description: "Filter include_in_menu")
+}
+
+type CategoryTree implements CategoryInterface, RoutableInterface @doc(description: "Contains the hierarchy of categories.") {
+    is_brand: String @doc(description: "A tree of child categories.")
+    homepage_position: String @doc(description: "A tree of child categories.")
+    show_in_quick_menu: FilterEqualTypeInput @doc(description: "Filter include_in_menu")
+}
