@@ -6,16 +6,6 @@
         "OSL-3.0",
         "AFL-3.0"
     ],
-    "config": {
-        "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true,
-            "laminas/laminas-dependency-plugin": true,
-            "magento/*": true,
-            "cweagans/composer-patches": true
-        },
-        "preferred-install": "dist",
-        "sort-packages": true
-    },
     "version": "2.4.5-p1",
     "require": {
         "akeneo/module-magento2-connector-community": "^103.3",
@@ -25,6 +15,7 @@
         "magento/product-community-edition": "2.4.5-p1",
         "paynl/magento2-plugin": "^3.3",
         "sendcloud/sendcloud": "^2.0",
+        "staempfli/symlinker-pro": "^1.2",
         "symplify/vendor-patches": "^11.1"
     },
     "autoload": {
@@ -34,18 +25,18 @@
             "**/Test/**"
         ],
         "files": [
-            "app/etc/NonComposerComponentRegistration.php"
+            "magento/app/etc/NonComposerComponentRegistration.php"
         ],
         "psr-0": {
             "": [
-                "app/code/",
-                "generated/code/"
+                "magento/app/code/",
+                "magento/generated/code/"
             ]
         },
         "psr-4": {
-            "Magento\\": "app/code/Magento/",
-            "Magento\\Framework\\": "lib/internal/Magento/Framework/",
-            "Magento\\Setup\\": "setup/src/Magento/Setup/"
+            "Magento\\": "magento/app/code/Magento/",
+            "Magento\\Framework\\": "magento/lib/internal/Magento/Framework/",
+            "Magento\\Setup\\": "magento/setup/src/Magento/Setup/"
         }
     },
     "require-dev": {
@@ -68,14 +59,16 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Magento\\PhpStan\\": "dev/tests/static/framework/Magento/PhpStan/",
-            "Magento\\Sniffs\\": "dev/tests/static/framework/Magento/Sniffs/",
-            "Magento\\TestFramework\\Inspection\\": "dev/tests/static/framework/Magento/TestFramework/Inspection/",
-            "Magento\\TestFramework\\Utility\\": "dev/tests/static/framework/Magento/TestFramework/Utility/",
-            "Magento\\Tools\\": "dev/tools/Magento/Tools/",
-            "Magento\\Tools\\Sanity\\": "dev/build/publication/sanity/Magento/Tools/Sanity/"
+            "Magento\\PhpStan\\": "magento/dev/tests/static/framework/Magento/PhpStan/",
+            "Magento\\Sniffs\\": "magento/dev/tests/static/framework/Magento/Sniffs/",
+            "Magento\\TestFramework\\Inspection\\": "magento/dev/tests/static/framework/Magento/TestFramework/Inspection/",
+            "Magento\\TestFramework\\Utility\\": "magento/dev/tests/static/framework/Magento/TestFramework/Utility/",
+            "Magento\\Tools\\": "magento/dev/tools/Magento/Tools/",
+            "Magento\\Tools\\Sanity\\": "magento/dev/build/publication/sanity/Magento/Tools/Sanity/"
         }
     },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
     "repositories": [
         {
             "type": "composer",
@@ -89,8 +82,61 @@
                 "patches/magento-framework-app-state-php.patch"
             ]
         },
-        "magento-force": "override"
+        "magento-root-dir": "magento/",
+        "magento-force": "override",
+        "component_paths": {
+            "trentrichardson/jquery-timepicker-addon": "magento/lib/web/jquery/jquery-ui-timepicker-addon.js",
+            "components/jquery": [
+                "magento/lib/web/jquery.js",
+                "magento/lib/web/jquery/jquery.min.js",
+                "magento/lib/web/jquery/jquery-migrate.js"
+            ],
+            "blueimp/jquery-file-upload": "magento/lib/web/jquery/fileUploader",
+            "components/jqueryui": [
+                "magento/lib/web/jquery/jquery-ui.js"
+            ],
+            "twbs/bootstrap": [
+                "magento/lib/web/jquery/jquery.tabs.js"
+            ],
+            "tinymce/tinymce": "magento/lib/web/tiny_mce_5"
+        }
     },
-    "minimum-stability": "stable",
-    "prefer-stable": true
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "vendor-dir": "magento/vendor",
+        "use-include-path": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "laminas/laminas-dependency-plugin": true,
+            "magento/*": true,
+            "cweagans/composer-patches": true,
+            "laminas/laminas-dependency-plugin": true,
+            "magento/composer-root-update-plugin": true,
+            "magento/magento-composer-installer": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "magento/composer-dependency-version-audit-plugin": true,
+            "cweagans/composer-patches": true
+        }
+    },
+    "scripts": {
+        "preventRunningComposerInMagentoFolder": "if [ $(basename `pwd`) = 'magento' ]; then echo \"Wrong directory .... ERROR \" && exit 1; fi",
+        "setPermissionsBin": "chmod -R +x magento/vendor/bin || chmod +x magento/vendor/bin/magento",
+        "setSymlinks": "php magento/vendor/bin/symlinker-pro create:from:file config/symlinks/magento.symlinks -f --enable-wildcards",
+        "generate-urn": "cd magento && bin/magento dev:urn-catalog:generate ../.idea/misc.xml",
+        "pre-install-cmd": [
+            "@preventRunningComposerInMagentoFolder"
+        ],
+        "pre-update-cmd": [
+            "@preventRunningComposerInMagentoFolder"
+        ],
+        "post-install-cmd": [
+            "@setPermissionsBin",
+            "@setSymlinks"
+        ],
+        "post-update-cmd": [
+            "@setPermissionsBin",
+            "@setSymlinks"
+        ]
+    }
 }

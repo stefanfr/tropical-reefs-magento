@@ -55,25 +55,25 @@ composer-dump :
 	$(PHPBIN) $(COMPOSERBIN) dumpautoload -o
 
 clear :
-	rm -rf var/cache/*
-	rm -rf var/page_cache/*
-	rm -rf var/session/*
-	rm -rf var/view_preprocessed/*
-	rm -rf pub/static/*
-	rm -rf generated/code/*
+	rm -rf magento/var/cache/*
+	rm -rf magento/var/page_cache/*
+	rm -rf magento/var/session/*
+	rm -rf magento/var/view_preprocessed/*
+	rm -rf magento/pub/static/*
+	rm -rf magento/generated/code/*
 
 di-compile :
-	$(PHPBIN) -dmemory_limit=-1 bin/magento setup:di:compile
+	$(PHPBIN) -dmemory_limit=-1 magento/bin/magento setup:di:compile
 
 setup-upgrade :
-	$(PHPBIN) -dmemory_limit=-1 bin/magento setup:upgrade --keep-generated
+	$(PHPBIN) -dmemory_limit=-1 magento/bin/magento setup:upgrade --keep-generated
 
 static-content :
-	$(PHPBIN) -dmemory_limit=-1 bin/magento setup:static-content:deploy $(LANGS) -f -j8
+	$(PHPBIN) -dmemory_limit=-1 magento/bin/magento setup:static-content:deploy $(LANGS) -f -j8
 
 cache :
-	$(PHPBIN) bin/magento cache:flush
-	$(PHPBIN) bin/magento cache:clean
+	$(PHPBIN) magento/bin/magento cache:flush
+	$(PHPBIN) magento/bin/magento cache:clean
 
 deploy-prod : write-config composer install cache composer-dump
 
