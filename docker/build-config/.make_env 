@@ -1,0 +1,4 @@
+PHPBIN=/usr/bin/php
+COMPOSERBIN=/usr/local/bin/composer
+LANGS=en_US
+ENVIRONMENT=production
