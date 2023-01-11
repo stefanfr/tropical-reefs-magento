@@ -5,7 +5,8 @@ COPY ./supervisor_cron.conf /etc/supervisor/conf.d/
 RUN chmod 0644 /etc/cron.d/crontab && crontab /etc/cron.d/crontab && chmod 0644 /etc/supervisor/conf.d/
 COPY ./zzz-tropicalreefs-fpm.ini /usr/local/etc/php-fpm.d/
 COPY ./ /var/www/html
-#RUN /bin/cp ./build-config/env.php /var/www/html/magento/app/etc/env.php && make di-compile static-content  \
-#    && /bin/rm /var/www/html/magento/app/etc/env.php  \
-#    && /bin/rm -Rf /var/www/html/var/cache/* /var/www/html/var/page_cache/*
+RUN /bin/cp /var/www/html/docker/build-config/env.php /var/www/html/magento/app/etc/env.php  \
+    && make di-compile static-content  \
+    && /bin/rm /var/www/html/magento/app/etc/env.php  \
+    && /bin/rm -Rf /var/www/html/magento/var/cache/* /var/www/html/magento/var/page_cache/*
 RUN chmod 777 /var/www/html
