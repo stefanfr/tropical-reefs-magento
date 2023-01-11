@@ -11,7 +11,7 @@ build:
   before_script:
     - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
   script:
-    - docker buildx build -t --build-context othersource=../ $CI_REGISTRY_IMAGE/magento-php ./docker/php
+    - docker buildx build ./docker/php
     - docker push $CI_REGISTRY_IMAGE/magento-php
-    - docker buildx build -t --build-context othersource=../ -t $CI_REGISTRY_IMAGE/magento ./docker/nginx
+    - docker buildx build -t ./docker/nginx
     - docker push $CI_REGISTRY_IMAGE/magento
