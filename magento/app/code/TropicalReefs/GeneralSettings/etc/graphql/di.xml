@@ -4,7 +4,8 @@
 		<arguments>
 			<argument name="extendedConfigData" xsi:type="array">
 				<item name="featured_category_id" xsi:type="string">homepage/settings/featured_category_id</item>
-				<item name="default_margin" xsi:type="string">prices/settings/default_margin</item>
+                <item name="brand_category_id" xsi:type="string">prices/settings/brand_category_id</item>
+                <item name="default_margin" xsi:type="string">prices/settings/default_margin</item>
 			</argument>
 		</arguments>
 	</type>
