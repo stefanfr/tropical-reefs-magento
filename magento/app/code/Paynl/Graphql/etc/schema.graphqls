@@ -1,17 +1,14 @@
 type Query {
-
     paynlTransaction (
             pay_order_id: String @doc(description: "The order id provided by Pay. This is not the same as the order id in Magento.")
     ) : PaynlTransactionOutput @resolver( class: "Paynl\\Graphql\\Model\\Resolver\\Transaction") @doc(description: "Get the status of the transaction")
 }
 
 type Mutation {
-
     paynlStartTransaction (
             order_id: String @doc(description: "Order Id")
             return_url: String @doc(description: "Url to send the customer to once the payment has finished.")
     ) : PaynlStartTransactionOutput @resolver( class: "Paynl\\Graphql\\Model\\Resolver\\StartTransaction") @doc(description: "Initialize the transaction.")
-
     paynlFinishTransaction (
             pay_order_id: String @doc(description: "The order id provided by Pay. This is not the same as the order id in Magento.")
     ) : PaynlTransactionOutput @resolver( class: "Paynl\\Graphql\\Model\\Resolver\\FinishTransaction") @doc(description: "Initialize the transaction.")

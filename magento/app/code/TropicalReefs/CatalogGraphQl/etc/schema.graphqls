@@ -7,7 +7,6 @@ type SelectedShippingMethod @doc(description: "Contains details about the select
     price_incl_tax: Money! @doc(description: "The cost of shipping using this shipping method, including tax.")
 }
 
-
 type CustomAttribute {
     code: String!
     label: String

@@ -164,7 +164,7 @@ return [
         'Magento_InventoryReservationsApi' => 0,
         'Magento_InventoryExportStock' => 0,
         'Magento_InventorySalesAdminUi' => 0,
-        'Magento_CatalogInventoryGraphQl' => 0,
+        'Magento_CatalogInventoryGraphQl' => 1,
         'Magento_InventorySalesFrontendUi' => 0,
         'Magento_InventorySetupFixtureGenerator' => 0,
         'Magento_InventoryShipping' => 0,
