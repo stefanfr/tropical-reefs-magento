@@ -1,2 +1,2 @@
-FROM gitlab.hostplus.nl:5050/tropical-reefs/docker/magento-nginx:latest
+FROM nginx:1.23
 COPY ./docker/nginx/nginx.conf /etc/nginx/nginx.conf
