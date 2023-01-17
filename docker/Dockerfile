@@ -32,7 +32,7 @@ RUN /bin/cp /var/www/html/docker/build-config/env.php /var/www/html/magento/app/
     && make di-compile static-content  \
     && /bin/rm /var/www/html/magento/app/etc/env.php  \
     && /bin/rm -Rf /var/www/html/magento/var/cache/* \
-    && /bin/rm /var/www/html/magento/var/page_cache/*
+    && /bin/rm -Rf /var/www/html/magento/var/page_cache/*
 
 # Stage 2: Deploy
 FROM nginx:1.23
