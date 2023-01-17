@@ -11,6 +11,6 @@ build:
     before_script:
         - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
     script:
-        - echo "$COMPOSER_AUTH" >> auth.json
+        - echo $COMPOSER_AUTH >> auth.json
         - docker build -f ./docker/Dockerfile -t $CI_REGISTRY_IMAGE/magento ./
         - docker push $CI_REGISTRY_IMAGE/magento
