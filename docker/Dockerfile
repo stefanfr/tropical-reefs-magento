@@ -31,6 +31,8 @@ RUN /bin/cp /var/www/html/docker/build-config/env.php /var/www/html/magento/app/
     && /bin/rm -Rf /var/www/html/magento/var/cache/* \
     && /bin/rm -Rf /var/www/html/magento/var/page_cache/*
 
+RUN chown -R www-data:www-data /var/www/html
+
 # Stage 2: Deploy
 FROM nginx:1.23
 
@@ -39,6 +41,9 @@ COPY --from=build /var/www/html /var/www/html
 
 # Copy nginx configuration
 COPY ./docker/build-config/nginx.conf /etc/nginx/nginx.conf
+
+# Mount php-socket
+VOLUME ["/var/run/php"]
 
 # Start nginx
 CMD ["nginx", "-g", "daemon off;"]
