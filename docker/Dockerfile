@@ -5,13 +5,10 @@ RUN apt-get update &&  \
     apt-get -y install cron supervisor &&  \
     apt-get clean
 
-COPY ./docker/php/crontab /etc/cron.d/crontab
-COPY ./docker/php/supervisor_cron.conf /etc/supervisor/conf.d/
+COPY ./docker/build-config/crontab /etc/cron.d/crontab
+COPY ./docker/build-config/supervisor_cron.conf /etc/supervisor/conf.d/
 
 RUN chmod 0644 /etc/cron.d/crontab && crontab /etc/cron.d/crontab && chmod 0644 /etc/supervisor/conf.d/
-
-# Copy custom config
-COPY ./docker/php/zzz-tropicalreefs-fpm.ini /usr/local/etc/php-fpm.d/
 
 # Copy Magento files
 COPY . /var/www/html
@@ -41,7 +38,7 @@ FROM nginx:1.23
 COPY --from=build /var/www/html /var/www/html
 
 # Copy nginx configuration
-COPY ./docker/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY ./docker/build-config/nginx.conf /etc/nginx/nginx.conf
 
 # Start nginx
 CMD ["nginx", "-g", "daemon off;"]
