@@ -15,6 +15,7 @@ COPY ./docker/php/zzz-tropicalreefs-fpm.ini /usr/local/etc/php-fpm.d/
 
 # Copy Magento files
 COPY . /var/www/html
+COPY ./docker/build-config/auth.json /var/www/html/auth.json
 
 # Set working directory
 WORKDIR /var/www/html
