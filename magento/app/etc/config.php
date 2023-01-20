@@ -336,6 +336,7 @@ return [
         'TropicalReefs_CustomAttributes' => 1,
         'TropicalReefs_CustomGraphQl' => 1,
         'TropicalReefs_GeneralSettings' => 1,
+        'TropicalReefs_SalesGraphQl' => 1
     ],
     'scopes' => [
         'websites' => [
@@ -345,16 +346,16 @@ return [
                 'name' => 'Admin',
                 'sort_order' => '0',
                 'default_group_id' => '0',
-                'is_default' => '0',
+                'is_default' => '0'
             ],
             'base' => [
                 'website_id' => '1',
                 'code' => 'base',
-                'name' => 'Tropical Reefs',
+                'name' => 'Main Website',
                 'sort_order' => '0',
                 'default_group_id' => '1',
-                'is_default' => '1',
-            ],
+                'is_default' => '1'
+            ]
         ],
         'groups' => [
             [
@@ -363,16 +364,16 @@ return [
                 'name' => 'Default',
                 'root_category_id' => '0',
                 'default_store_id' => '0',
-                'code' => 'main_website_store',
+                'code' => 'default'
             ],
             [
                 'group_id' => '1',
                 'website_id' => '1',
                 'name' => 'Tropical Reefs',
-                'root_category_id' => '282',
+                'root_category_id' => '256',
                 'default_store_id' => '1',
-                'code' => 'main_website_store',
-            ],
+                'code' => 'main_website_store'
+            ]
         ],
         'stores' => [
             'admin' => [
@@ -382,7 +383,7 @@ return [
                 'group_id' => '0',
                 'name' => 'Admin',
                 'sort_order' => '0',
-                'is_active' => '1',
+                'is_active' => '1'
             ],
             'default' => [
                 'store_id' => '1',
@@ -391,7 +392,7 @@ return [
                 'group_id' => '1',
                 'name' => 'Tropical Reefs EN',
                 'sort_order' => '0',
-                'is_active' => '1',
+                'is_active' => '1'
             ],
             'tropicalreefs_nl' => [
                 'store_id' => '2',
@@ -399,19 +400,9 @@ return [
                 'website_id' => '1',
                 'group_id' => '1',
                 'name' => 'Tropical Reefs NL',
-                'sort_order' => '0',
-                'is_active' => '1',
-            ],
-        ],
-    ],
-    'system' => [
-        'default' => [
-            'general' => [
-                'locale' => [
-                    'timezone' => 'Europe/Amsterdam',
-                    'code' => 'en_GB',
-                ],
-            ],
-        ],
-    ],
+                'sort_order' => '2',
+                'is_active' => '1'
+            ]
+        ]
+    ]
 ];

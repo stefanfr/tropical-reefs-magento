@@ -1,0 +1,34 @@
+
+type Query {
+
+    salesOrder (
+            orderNumber: String @doc(description: "Query by orderNumber.")
+    ) : SalesOrder @resolver( class: "TropicalReefs\\SalesGraphQl\\Model\\Resolver\\SalesOrder") @doc(description: "Query by The Sales Order query returns information about a Sales order.")
+}
+
+type SalesOrder @doc(description: "Contains details about each of the customer's orders.") {
+    id: ID! @doc(description: "The unique ID for a `CustomerOrder` object.")
+    order_date: String! @doc(description: "The date the order was placed.")
+    status: String! @doc(description: "The current status of the order.")
+    number: String! @doc(description: "The order number.")
+    items: [OrderItemInterface] @doc(description: "An array containing the items purchased in this order.") @resolver(class: "TropicalReefs\\SalesGraphQl\\Model\\Resolver\\OrderItems")
+    totals: OrderTotal @doc(description: "Details about the calculated totals for this order.") @resolver(class: "Magento\\SalesGraphQl\\Model\\Resolver\\OrderTotal")
+    payment_methods: [OrderPaymentMethod] @doc(description: "Payment details for the order.")
+    shipping_address: OrderAddress @doc(description: "The shipping address for the order.")
+    billing_address: OrderAddress @doc(description: "The billing address for the order.")
+    carrier: String @doc(description: "The shipping carrier for the order delivery.") @resolver(class: "Magento\\SalesGraphQl\\Model\\Resolver\\CustomerOrders\\Carrier")
+    shipping_method: String @doc(description: "The delivery method for the order.")
+    shipments: [OrderShipment] @doc(description: "A list of shipments for the order.") @resolver(class: "Magento\\SalesGraphQl\\Model\\Resolver\\Shipments")
+    comments: [SalesCommentItem] @doc(description: "Comments about the order.")
+    increment_id: String @deprecated(reason: "Use the `id` field instead.")
+    order_number: String! @deprecated(reason: "Use the `number` field instead.")
+    created_at: String @deprecated(reason: "Use the `order_date` field instead.")
+    grand_total: Float  @deprecated(reason: "Use the `totals.grand_total` field instead.")
+}
+
+interface OrderItemInterface {
+    small_image: String @doc(description: "The relative path to the small image, which is used on catalog pages.")
+    product_sale_row_total: Money! @doc(description: "The sale price of the base product, including selected options.")
+    product_sale_price_incl_tax: Money! @doc(description: "The sale price of the base product, including selected options.")
+    product_sale_row_total_incl_tax: Money! @doc(description: "The sale price of the base product, including selected options.")
+}
