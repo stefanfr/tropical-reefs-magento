@@ -10,7 +10,6 @@
     "require": {
         "akeneo/module-magento2-connector-community": "^103.3",
         "cweagans/composer-patches": "^1.7",
-        "hostplus/symlinker-pro": "dev-main",
         "justbetter/magento2-akeneo-bundle": "^1.11",
         "magento/composer-dependency-version-audit-plugin": "~0.1",
         "magento/composer-root-update-plugin": "~2.0",
@@ -20,6 +19,7 @@
         "parcelpro/shipment": "^2.14",
         "paynl/magento2-plugin": "^3.3",
         "sendcloud/sendcloud": "^2.0",
+        "staempfli/symlinker-pro": "^3.0",
         "symplify/vendor-patches": "^11.1"
     },
     "autoload": {
@@ -74,13 +74,14 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "repositories": {
+        "packagist.org": false,
+        "private-packagist": {
+            "type": "composer",
+            "url": "https://repo.packagist.com/flashpoint-bv/"
+        },
         "mageplaza": {
             "type": "composer",
             "url": "https://repo.mageplaza.com"
-        },
-        "local-symlinker-pro": {
-            "type": "path",
-            "url": "/Users/stefanfransen/repos/tools/symlinker-pro"
         },
         "repo.magento": {
             "type": "composer",

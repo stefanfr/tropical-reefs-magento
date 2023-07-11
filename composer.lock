@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e39575ebd71515ea4e047ae800f9b9a7",
+    "content-hash": "fc5d2b09a8411087cc93b7b168da80d3",
     "packages": [
         {
             "name": "2tvenom/cborencode",
@@ -2491,49 +2491,6 @@
                 }
             ],
             "time": "2023-04-17T16:11:26+00:00"
-        },
-        {
-            "name": "hostplus/symlinker-pro",
-            "version": "dev-main",
-            "dist": {
-                "type": "path",
-                "url": "/Users/stefanfransen/repos/tools/symlinker-pro",
-                "reference": "d7f8d56148e355598bca5aa0f1af1520c621b15f"
-            },
-            "require": {
-                "padraic/phar-updater": "1.0.*",
-                "symfony/console": "~5.4|~4.1|~3.4|~2.1"
-            },
-            "require-dev": {
-                "kherge/box": "~2.5"
-            },
-            "bin": [
-                "bin/symlinker-pro"
-            ],
-            "type": "hostplus-tool",
-            "autoload": {
-                "psr-4": {
-                    "Hostplus\\Symlinker\\": "src/Hostplus/Symlinker/"
-                }
-            },
-            "scripts": {
-                "setPermissionsBin": [
-                    "chmod -R +x bin"
-                ],
-                "post-install-cmd": [
-                    "@setPermissionsBin"
-                ],
-                "post-update-cmd": [
-                    "@setPermissionsBin"
-                ]
-            },
-            "license": [
-                "GPL-3.0"
-            ],
-            "description": "Tool to create relative symlinks",
-            "transport-options": {
-                "relative": false
-            }
         },
         {
             "name": "http-interop/http-factory-guzzle",
@@ -21334,6 +21291,69 @@
             "time": "2023-02-13T17:21:24+00:00"
         },
         {
+            "name": "staempfli/symlinker-pro",
+            "version": "v3.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FlashpointBV/symlinker-pro.git",
+                "reference": "bf4c9c737a48067cc2fab1c83c067001f426dce1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FlashpointBV/symlinker-pro/zipball/bf4c9c737a48067cc2fab1c83c067001f426dce1",
+                "reference": "bf4c9c737a48067cc2fab1c83c067001f426dce1",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://repo.packagist.com/flashpoint-bv/dists/%package%/%version%/r%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "padraic/phar-updater": "1.0.*",
+                "symfony/console": "~5.4|~4.1|~3.0|~2.1"
+            },
+            "require-dev": {
+                "kherge/box": "~2.5"
+            },
+            "bin": [
+                "bin/symlinker-pro"
+            ],
+            "type": "staempfli-tool",
+            "autoload": {
+                "psr-4": {
+                    "Staempfli\\Symlinker\\": "src/Staempfli/Symlinker/"
+                }
+            },
+            "notification-url": "https://repo.packagist.com/flashpoint-bv/downloads/",
+            "scripts": {
+                "setPermissionsBin": [
+                    "chmod -R +x bin"
+                ],
+                "post-install-cmd": [
+                    "@setPermissionsBin"
+                ],
+                "post-update-cmd": [
+                    "@setPermissionsBin"
+                ]
+            },
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Juan Alonso",
+                    "email": "juan.alonso@staempfli.com"
+                }
+            ],
+            "description": "Tool to create relative symlinks",
+            "support": {
+                "source": "https://github.com/FlashpointBV/symlinker-pro/tree/v3.0.1"
+            },
+            "time": "2023-04-07T08:39:06+00:00"
+        },
+        {
             "name": "symfony/config",
             "version": "v6.3.0",
             "source": {
@@ -28412,9 +28432,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "hostplus/symlinker-pro": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],
