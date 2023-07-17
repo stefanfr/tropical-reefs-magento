@@ -21,7 +21,7 @@ WORKDIR /var/www/html
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php composer-setup.php --install-dir=/usr/local/bin --filename=composer \
     && php -r "unlink('composer-setup.php');" \
-    && composer install --no-dev  \
+    && composer install --no-dev --prefer-dist \
     && rm -f /usr/local/bin/composer
 
 # Run setup Magento
