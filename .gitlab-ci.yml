@@ -3,7 +3,7 @@ stages:
   - build_nginx
 
 build_php:
-    stage: build
+    stage: build_php
     image:
       name: gcr.io/kaniko-project/executor:v1.9.0-debug
       entrypoint: [ "" ]
