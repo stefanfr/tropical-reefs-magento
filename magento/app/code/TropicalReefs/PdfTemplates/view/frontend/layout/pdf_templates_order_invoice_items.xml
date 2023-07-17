@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" label="Email Invoice Items List" design_abstraction="custom">
+    <body>
+        <block class="TropicalReefs\PdfTemplates\Block\Invoice\Items" name="items" template="TropicalReefs_PdfTemplates::handle/invoice/items.phtml">
+            <block class="Magento\Sales\Block\Order\Invoice\Totals" name="invoice_totals" template="TropicalReefs_PdfTemplates::handle/totals.phtml" cacheable="false">
+                <arguments>
+                    <argument name="label_properties" xsi:type="string">colspan="3"</argument>
+                </arguments>
+                <block class="Magento\Tax\Block\Sales\Order\Tax" name="tax" template="TropicalReefs_PdfTemplates::handle/tax.phtml"/>
+            </block>
+        </block>
+        <block class="Magento\Framework\View\Element\Template" name="additional.product.info" template="Magento_Theme::template.phtml"/>
+    </body>
+</page>

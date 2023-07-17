@@ -7,4 +7,11 @@
             </argument>
         </arguments>
     </type>
+    <type name="Magento\Framework\GraphQl\Query\Resolver\Argument\EntityAttributesResolverInterface">
+        <arguments>
+            <argument name="resolvers" xsi:type="array">
+                <item name="productAttributeFilterInputResolver" xsi:type="object">TropicalReefs\CustomGraphQl\Model\Resolver\ProductAttributeFilterInputResolver</item>
+            </argument>
+        </arguments>
+    </type>
 </config>

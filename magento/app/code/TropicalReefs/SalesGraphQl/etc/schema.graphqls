@@ -1,9 +1,11 @@
-
 type Query {
-
     salesOrder (
             orderNumber: String @doc(description: "Query by orderNumber.")
     ) : SalesOrder @resolver( class: "TropicalReefs\\SalesGraphQl\\Model\\Resolver\\SalesOrder") @doc(description: "Query by The Sales Order query returns information about a Sales order.")
+}
+
+type CustomerOrder @doc(description: "Contains details about each of the customer's orders.") {
+    items: [OrderItemInterface] @doc(description: "An array containing the items purchased in this order.") @resolver(class: "TropicalReefs\\SalesGraphQl\\Model\\Resolver\\OrderItems")
 }
 
 type SalesOrder @doc(description: "Contains details about each of the customer's orders.") {
