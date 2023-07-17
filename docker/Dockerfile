@@ -21,6 +21,7 @@ WORKDIR /var/www/html
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php composer-setup.php --install-dir=/usr/local/bin --filename=composer \
     && php -r "unlink('composer-setup.php');" \
+    && /bin/cp /var/www/html/docker/build-config/auth.json /var/www/html/auth.json  \
     && composer install --no-dev --prefer-dist \
     && rm -f /usr/local/bin/composer
 
