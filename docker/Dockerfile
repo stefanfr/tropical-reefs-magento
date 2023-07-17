@@ -23,7 +23,8 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php -r "unlink('composer-setup.php');" \
     && /bin/cp /var/www/html/docker/build-config/auth.json /var/www/html/auth.json  \
     && composer install --no-dev --prefer-dist \
-    && rm -f /usr/local/bin/composer
+    && rm -f /usr/local/bin/composer \
+    && /bin/rm -Rf /var/www/html/auth.json
 
 # Run setup Magento
 RUN /bin/cp /var/www/html/docker/build-config/env.php /var/www/html/magento/app/etc/env.php  \
