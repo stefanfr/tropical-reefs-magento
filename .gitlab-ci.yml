@@ -11,4 +11,4 @@ build:
         --dockerfile "${CI_PROJECT_DIR}/docker/Dockerfile"
         --destination "${CI_REGISTRY_IMAGE}/magento:${CI_COMMIT_TAG}"
     before_script:
-        - echo $COMPOSER_AUTH >> auth.json
+        - echo $COMPOSER_AUTH >> /kaniko/auth.json
