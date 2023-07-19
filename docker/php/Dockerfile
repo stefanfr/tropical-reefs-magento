@@ -2,7 +2,7 @@ FROM gitlab.hostplus.nl:5050/tropical-reefs/docker/php8.1:latest as build
 
 # Setup cron jobs
 RUN apt-get update &&  \
-    apt-get -y install cron supervisor &&  \
+    apt-get -y install cron supervisor nano &&  \
     apt-get clean
 
 COPY ./docker/build-config/crontab /etc/cron.d/crontab
@@ -23,7 +23,7 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php -r "unlink('composer-setup.php');" \
     && /bin/cp /var/www/html/docker/build-config/auth.json /var/www/html/auth.json  \
     && composer install --no-dev --prefer-dist \
-    && rm -f /usr/local/bin/composer \
+    && /bin/rm -f /usr/local/bin/composer \
     && /bin/rm -Rf /var/www/html/auth.json
 
 # Run setup Magento
